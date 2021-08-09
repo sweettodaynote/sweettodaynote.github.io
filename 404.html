@@ -3,10 +3,10 @@
     var qry = location.search.replace(/^\?/, '&');
     var loc = location.pathname.split('/').slice(2).join('/')
     var rdr = loc+qry;
-    if(!location.pathname.indexOf('/blog/')) return location.replace('/blog/?view='+rdr);
-    if(!location.pathname.indexOf('/photo/')) return location.replace('/photo/?view='+rdr);
-    if(!location.pathname.indexOf('/audio/')) return location.replace('/audio/?view='+rdr);
-    if(!location.pathname.indexOf('/video/')) return location.replace('/video/?view='+rdr);
+    if(!location.pathname.indexOf('/blog/')) return location.replace('/blog/?r='+rdr);
+    if(!location.pathname.indexOf('/photo/')) return location.replace('/photo/?r='+rdr);
+    if(!location.pathname.indexOf('/audio/')) return location.replace('/audio/?r='+rdr);
+    if(!location.pathname.indexOf('/video/')) return location.replace('/video/?r='+rdr);
     return location.replace('/');
   })();
 </script>
