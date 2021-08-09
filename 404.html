@@ -1,2 +1,8 @@
-Not Found.
-{{ page.url }}
+<script>
+  var rdr = location.pathname.split('/').slice(1).join('/');
+  if(!location.pathname.indexOf('/blog/')) return location.replace('/blog/?view='+rdr);
+  if(!location.pathname.indexOf('/photo/')) return location.replace('/photo/?view='+rdr);
+  if(!location.pathname.indexOf('/audio/')) return location.replace('/audio/?view='+rdr);
+  if(!location.pathname.indexOf('/video/')) return location.replace('/video/?view='+rdr);
+  location.replace('/');
+</script>
