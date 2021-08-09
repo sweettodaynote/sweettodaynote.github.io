@@ -117,12 +117,10 @@
             return 'https://img.youtube.com/vi/{0}/0.jpg'.replace('{0}', v);
           }
         };
-
         var TOK_NBLOG = {};
         $("#youtube").rss(URI_YTUBE, { tokens: TOK_YTUBE, entryTemplate: TMP_YTUBE, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD' });
         $("#nblog").rss(URI_NBLOG, { tokens: TOK_NBLOG, entryTemplate: TMP_NBLOG, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD' });
       });
-
     </script>
   </body>
 </html>
