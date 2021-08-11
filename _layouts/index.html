@@ -116,7 +116,7 @@
           canvasUrl: function(entry, tokens) {
             var uri = new URL(entry.link), v = uri.searchParams.get('v');
             var src = new URL('https://www.youtube.com/embed/{0}'.replace('{0}', v));
-            return '/v/'+src.hostname+src.pathname+src.search;
+            return '/v/?url='+encodeURIComponent(src.toString());
           },
           thumbnail: function(entry, tokens) {
             var uri = new URL(entry.link), v = uri.searchParams.get('v');
@@ -126,7 +126,7 @@
         var TOK_NBLOG = {
           canvasUrl: function(entry, tokens) {
             var uri = new URL(entry.link); uri.hostname = 'm.blog.naver.com';
-            return '/v/'+uri.hostname+uri.pathname+uri.search;
+            return '/v/?url='+encodeURIComponent(uri.toString());
           }
         };
         $("#youtube").rss(URI_YTUBE, { tokens: TOK_YTUBE, entryTemplate: TMP_YTUBE, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 10, });
