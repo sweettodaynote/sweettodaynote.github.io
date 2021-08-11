@@ -91,41 +91,13 @@
       <img src="/assets/landing.jpg">
       <iframe id="frame" src="about:blank" allowtransparency="true"></iframe>
     </div>
-    <div class="canvas feeds">
-      <div class="rss-feeds" id="youtube"></div>
-      <div class="rss-feeds" id="nblog"></div>
-    </div>
     <script src="https://polyfill.io/v3/polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/4.3.0/jquery.rss.min.js" integrity="sha512-JnQUNrbJVvNWgmwaNZ6/kFdqHLmaoEt2ZYcbiu/58F8nIjTZaQel5Tp3Rl20F3AI7pIANU8/98NJHqHyGHP7Rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       jQuery(function ($) {
-        $('#frame').attr('src', 'https://blog.naver.com/miyuki1253/222464754862');
-      });
-      jQuery(function ($) {
-        var TMP_YTUBE = '<li><a href="{canvasUrl}"><img src="{thumbnail}"><h3>{title}</h3></a></li>';
-        var TMP_NBLOG = '<li><a href="{canvasUrl}"><h3>{title}</h3></a><p>{shortBodyPlain}</p></li>';
-        var URI_YTUBE = "https://www.youtube.com/feeds/videos.xml?channel_id=UCBvTaZ8xYuUNarwWz9BWU5A";
-        var URI_NBLOG = "https://rss.blog.naver.com/miyuki1253.xml";
-        var TOK_YTUBE = {
-          canvasUrl: function(entry, tokens) {
-            var uri = new URL(entry.link), v = uri.searchParams.get('v');
-            var src = new URL('https://www.youtube.com/embed/{0}'.replace('{0}', v));
-            return '/v/'+src.hostname+src.pathname+src.search;
-          },
-          thumbnail: function(entry, tokens) {
-            var uri = new URL(entry.link), v = uri.searchParams.get('v');
-            return 'https://img.youtube.com/vi/{0}/0.jpg'.replace('{0}', v);
-          }
-        };
-        var TOK_NBLOG = {
-          canvasUrl: function(entry, tokens) {
-            var uri = new URL(entry.link); uri.hostname = 'm.blog.naver.com';
-            return '/v/'+uri.hostname+uri.pathname+uri.search;
-          }
-        };
-        $("#youtube").rss(URI_YTUBE, { tokens: TOK_YTUBE, entryTemplate: TMP_YTUBE, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 3, });
-        $("#nblog").rss(URI_NBLOG, { tokens: TOK_NBLOG, entryTemplate: TMP_NBLOG, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 5, });
+        var uri = new URL('https:/'+location.pathname.replace('/v/', '/');
+        $('#frame').attr('src', urito.sStreaomgtoStering());
       });
     </script>
   </body>
