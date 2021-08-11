@@ -129,8 +129,8 @@
             return '/v/?url='+encodeURIComponent(uri.toString());
           }
         };
-        $("#youtube").rss(URI_YTUBE, { tokens: TOK_YTUBE, entryTemplate: TMP_YTUBE, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 10, });
-        $("#nblog").rss(URI_NBLOG, { tokens: TOK_NBLOG, entryTemplate: TMP_NBLOG, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 50, });
+        $("#youtube").rss(URI_YTUBE, { tokens: TOK_YTUBE, entryTemplate: TMP_YTUBE, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 5, });
+        $("#nblog").rss(URI_NBLOG, { tokens: TOK_NBLOG, entryTemplate: TMP_NBLOG, dateLocale: 'ko', dateFormat: 'YYYY-MM-DD', limit: 15, });
       });
     </script>
   </body>
