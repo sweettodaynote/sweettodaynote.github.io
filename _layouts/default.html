@@ -22,17 +22,17 @@
     <meta name="robots" content="index, follow" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1" />
-    <title>{{ site.title }}</title>
-    <meta name="description" content="{{ site.description }}">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="{{ site.title }}">
-    <meta property="og:description" content="{{ site.description }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:url" content="https://sweettodaynote.github.io/">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/88458911">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@sweettodaynote">
-    <meta name="twitter:title" content="{{ site.title }}">
-    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta property="profile:first_name" content="보나">
     <meta property="profile:last_name" content="윤">
     <script type="application/ld+json">
@@ -75,21 +75,39 @@
     <meta name="theme-color" content="#ffffff">
     <style>
       * { margin:0; padding:0; }
-      html, body { background: #333; color: #fff; position: relative; }
-      .canvas { width: 100%; max-width:860px; margin-left:auto; margin-right:auto; position: relative; overflow: hidden; }
-      .canvas frame { width: 100%; background: transparent; }
-      .rss-feeds {}
-      .rss-feeds ul { list-style: none; margin: 0; padding: 0; }
-      .rss-feeds li { margin: 15px; padding: 15px; background: #fff; color: #333; box-shadow: #fff 1px 1px 1px; border-radius: 0.3rem; }
-      .rss-feeds li a { text-decoration: inherit; color: inherit; display: block; font-size: 1rem; }
-      .rss-feeds li h3 { margin: 0; padding: 0; margin-top: 0.5rem; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-      .rss-feeds li p { margin: 0; padding: 0; margin-top: 0.5rem; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      html, body { background: #333; color: #fff; position: relative; height: 100%; }
+      a, a:hover, a:visited { text-decoration: inherit; color: inherit; }
+      .canvas { width: 100%; max-width:860px; margin-left:auto; margin-right:auto; position: relative; overflow: hidden; height: 100%; }
+      .canvas { display: flex; flex-direction: column; }
+      .canvas-head { background: #371777; padding: 0.25rem 0.5rem; }
+      .canvas-body { flex-grow: 1; }
+      .canvas-body iframe { width: 100%; height: 100%; border: 0; }
+      .profile { display: flex; flex-direction: row; align-items: center; }
+      .profile-icon { margin: 0.25rem; }
+      .profile-icon img { border-radius: 50rem; border: 1px solid #fff; }
+      .profile-body { flex-grow: 1; padding: 0.25rem; }
+      .profile-body h1 { font-size: 1rem; }
+      .profile-body p { font-size: 0.8rem; }
+      .fc-secondary { color: rgba(255, 255, 255, 0.6); }
     </style>
   </head>
   <body>
     <div class="canvas">
-      <img src="/assets/landing.jpg">
-      <iframe id="frame" src="about:blank" allowtransparency="true"></iframe>
+      <div class="canvas-head">
+        <a class="profile" href="/">
+          <div class="profile-icon">
+            <img src="https://avatars.githubusercontent.com/u/88458911?s=60" /> 
+          </div>
+          <div class="profile-body">
+            <h1>스윗금귤</h1>
+            <p>당신의 마음을 전하는 목소리, 스윗금귤</p>
+            <p class="fc-secondary bind-url"></p>
+          </div>
+        </a>
+      </div>
+      <div class="canvas-body">
+        <iframe class="iframe-bind-url" src="about:blank"></iframe>
+      </div>
     </div>
     <script src="https://polyfill.io/v3/polyfill.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
@@ -97,7 +115,8 @@
     <script>
       jQuery(function ($) {
         var uri = new URL('https:/'+location.pathname.replace('/v/', '/');
-        $('#frame').attr('src', uri.toString());
+        $('.bind-url').text(uri.toString());
+        $('.iframe-bind-url').attr('src', uri.toString());
       });
     </script>
   </body>
