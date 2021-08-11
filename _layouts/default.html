@@ -114,7 +114,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/4.3.0/jquery.rss.min.js" integrity="sha512-JnQUNrbJVvNWgmwaNZ6/kFdqHLmaoEt2ZYcbiu/58F8nIjTZaQel5Tp3Rl20F3AI7pIANU8/98NJHqHyGHP7Rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       jQuery(function ($){
-        var url = 'https:/'+location.pathname.replace('/v/', '/');
+        var uri = new URL(location.href), url = uri.searchParams.get('url');
         $('.bind-url').text(url);
         $('.iframe-bind-url').attr('src', url);
       });
