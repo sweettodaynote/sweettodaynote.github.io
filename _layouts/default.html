@@ -115,6 +115,7 @@
     <script>
       jQuery(function ($){
         var uri = new URL(location.href), url = uri.searchParams.get('url');
+        if(!url) return location.replace('/');
         $('.bind-url').text(url);
         $('.iframe-bind-url').attr('src', url);
       });
