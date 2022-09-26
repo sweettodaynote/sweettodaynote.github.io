@@ -1,4 +1,0 @@
-Sitemap: https://sweettodaynote.github.io/sitemap.xml
-
-User-agent: *
-Allow: /
